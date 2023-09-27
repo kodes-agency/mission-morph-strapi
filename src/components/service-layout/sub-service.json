@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_subservice_layout_sub_services",
+  "info": {
+    "displayName": "subService",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "content": {
+      "type": "richtext"
+    },
+    "price": {
+      "type": "string"
+    },
+    "features": {
+      "type": "richtext"
+    }
+  }
+}

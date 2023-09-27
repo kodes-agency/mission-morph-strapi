@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_service_layout_statistics",
+  "info": {
+    "displayName": "statistics"
+  },
+  "options": {},
+  "attributes": {
+    "number": {
+      "type": "integer"
+    },
+    "paragraph": {
+      "type": "text"
+    }
+  }
+}

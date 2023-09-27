@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_about_page_service_steps",
+  "info": {
+    "displayName": "service-steps"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "content": {
+      "type": "text"
+    }
+  }
+}

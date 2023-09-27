@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_service_page_service_cta_2s",
+  "info": {
+    "displayName": "ServiceCTA2",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "image": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

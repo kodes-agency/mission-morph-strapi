@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_service_page_service_ctas",
+  "info": {
+    "displayName": "serviceCTA"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "yesButton": {
+      "type": "string"
+    },
+    "noButton": {
+      "type": "string"
+    }
+  }
+}

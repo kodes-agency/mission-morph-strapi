@@ -1,0 +1,61 @@
+{
+  "kind": "collectionType",
+  "collectionName": "services",
+  "info": {
+    "singularName": "service",
+    "pluralName": "services",
+    "displayName": "service",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "homePageTitle": {
+      "type": "string"
+    },
+    "homePageThumbnail": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "seo.seo"
+    },
+    "homePageContent": {
+      "type": "text"
+    },
+    "color": {
+      "type": "customField",
+      "regex": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$",
+      "customField": "plugin::color-picker.color"
+    },
+    "heroSection": {
+      "type": "component",
+      "repeatable": false,
+      "component": "service-layout.hero-section"
+    },
+    "subService": {
+      "type": "component",
+      "repeatable": true,
+      "component": "service-layout.sub-service"
+    },
+    "statistics": {
+      "type": "component",
+      "repeatable": true,
+      "component": "service-layout.statistics"
+    }
+  }
+}

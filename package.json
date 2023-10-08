@@ -11,15 +11,16 @@
   },
   "devDependencies": {},
   "dependencies": {
+    "@ckeditor/strapi-plugin-ckeditor": "^0.0.9",
     "@creazy231/strapi-plugin-apollo-sandbox": "^0.0.13",
-    "@strapi/plugin-color-picker": "^4.13.7",
-    "@strapi/plugin-graphql": "^4.13.7",
-    "@strapi/plugin-i18n": "4.13.7",
-    "@strapi/plugin-users-permissions": "4.13.7",
-    "@strapi/strapi": "4.13.7",
+    "@strapi/plugin-color-picker": "^4.14.3",
+    "@strapi/plugin-graphql": "^4.14.3",
+    "@strapi/plugin-i18n": "4.14.3",
+    "@strapi/plugin-users-permissions": "4.14.3",
+    "@strapi/strapi": "4.14.3",
     "better-sqlite3": "8.6.0",
-    "strapi-plugin-local-image-sharp": "^1.7.0",
-    "strapi-tiptap-editor": "^0.9.12"
+    "custom-slug": "^2.1.1",
+    "strapi-plugin-local-image-sharp": "^1.7.0"
   },
   "author": {
     "name": "A Strapi developer"

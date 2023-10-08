@@ -9,14 +9,22 @@
     "title": {
       "type": "string"
     },
-    "content": {
-      "type": "richtext"
-    },
     "price": {
       "type": "string"
     },
     "features": {
-      "type": "richtext"
+      "displayName": "features",
+      "type": "component",
+      "repeatable": true,
+      "component": "service-layout.features"
+    },
+    "contents": {
+      "type": "customField",
+      "options": {
+        "output": "HTML",
+        "preset": "light"
+      },
+      "customField": "plugin::ckeditor.CKEditor"
     }
   }
 }

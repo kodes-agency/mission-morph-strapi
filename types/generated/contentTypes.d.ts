@@ -23,6 +23,7 @@ export interface AdminPermission extends Schema.CollectionType {
       Attribute.SetMinMaxLength<{
         minLength: 1;
       }>;
+    actionParameters: Attribute.JSON & Attribute.DefaultTo<{}>;
     subject: Attribute.String &
       Attribute.SetMinMaxLength<{
         minLength: 1;
@@ -727,13 +728,28 @@ export interface ApiBlogBlog extends Schema.CollectionType {
   attributes: {
     title: Attribute.String;
     thumbnail: Attribute.Media;
-    content: Attribute.RichText;
     blogCategories: Attribute.Relation<
       'api::blog.blog',
       'manyToMany',
       'api::blog-category.blog-category'
     >;
     seo: Attribute.Component<'seo.seo'>;
+    slug: Attribute.String &
+      Attribute.CustomField<
+        'plugin::slug.slug',
+        {
+          pattern: 'title';
+          kw: '';
+        }
+      >;
+    contents: Attribute.RichText &
+      Attribute.CustomField<
+        'plugin::ckeditor.CKEditor',
+        {
+          output: 'HTML';
+          preset: 'light';
+        }
+      >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -750,9 +766,10 @@ export interface ApiBlogCategoryBlogCategory extends Schema.CollectionType {
     singularName: 'blog-category';
     pluralName: 'blog-categories';
     displayName: 'blogCategory';
+    description: '';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     category: Attribute.String;
@@ -763,7 +780,6 @@ export interface ApiBlogCategoryBlogCategory extends Schema.CollectionType {
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
       'api::blog-category.blog-category',
       'oneToOne',
@@ -803,6 +819,11 @@ export interface ApiHomePageHomePage extends Schema.SingleType {
     seo: Attribute.Component<'seo.seo'>;
     blogThumbnail: Attribute.Media;
     aboutImage: Attribute.Media;
+    blogs: Attribute.Relation<
+      'api::home-page.home-page',
+      'oneToMany',
+      'api::blog.blog'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -837,11 +858,17 @@ export interface ApiServiceService extends Schema.CollectionType {
     homePageThumbnail: Attribute.Media;
     seo: Attribute.Component<'seo.seo'>;
     homePageContent: Attribute.Text;
-    color: Attribute.String &
-      Attribute.CustomField<'plugin::color-picker.color'>;
     heroSection: Attribute.Component<'service-layout.hero-section'>;
     subService: Attribute.Component<'service-layout.sub-service', true>;
     statistics: Attribute.Component<'service-layout.statistics', true>;
+    color: Attribute.String;
+    slug: Attribute.String &
+      Attribute.CustomField<
+        'plugin::slug.slug',
+        {
+          pattern: 'title';
+        }
+      >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -890,7 +917,7 @@ export interface ApiServicePageServicePage extends Schema.SingleType {
   };
 }
 
-declare module '@strapi/strapi' {
+declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
       'admin::permission': AdminPermission;

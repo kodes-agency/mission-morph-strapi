@@ -26,9 +26,6 @@
         "audios"
       ]
     },
-    "content": {
-      "type": "richtext"
-    },
     "blogCategories": {
       "type": "relation",
       "relation": "manyToMany",
@@ -39,6 +36,22 @@
       "type": "component",
       "repeatable": false,
       "component": "seo.seo"
+    },
+    "slug": {
+      "type": "customField",
+      "options": {
+        "pattern": "title",
+        "kw": ""
+      },
+      "customField": "plugin::slug.slug"
+    },
+    "contents": {
+      "type": "customField",
+      "options": {
+        "output": "HTML",
+        "preset": "light"
+      },
+      "customField": "plugin::ckeditor.CKEditor"
     }
   }
 }

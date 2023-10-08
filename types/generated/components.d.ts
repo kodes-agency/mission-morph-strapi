@@ -23,6 +23,16 @@ export interface SeoSeo extends Schema.Component {
   };
 }
 
+export interface ServiceLayoutFeatures extends Schema.Component {
+  collectionName: 'components_service_layout_features';
+  info: {
+    displayName: 'features';
+  };
+  attributes: {
+    feature: Attribute.String;
+  };
+}
+
 export interface ServiceLayoutHeroSection extends Schema.Component {
   collectionName: 'components_service_layout_hero_sections';
   info: {
@@ -55,9 +65,16 @@ export interface ServiceLayoutSubService extends Schema.Component {
   };
   attributes: {
     title: Attribute.String;
-    content: Attribute.RichText;
     price: Attribute.String;
-    features: Attribute.RichText;
+    features: Attribute.Component<'service-layout.features', true>;
+    contents: Attribute.RichText &
+      Attribute.CustomField<
+        'plugin::ckeditor.CKEditor',
+        {
+          output: 'HTML';
+          preset: 'light';
+        }
+      >;
   };
 }
 
@@ -85,11 +102,12 @@ export interface ServicePageServiceCta extends Schema.Component {
   };
 }
 
-declare module '@strapi/strapi' {
+declare module '@strapi/types' {
   export module Shared {
     export interface Components {
       'about-page.service-steps': AboutPageServiceSteps;
       'seo.seo': SeoSeo;
+      'service-layout.features': ServiceLayoutFeatures;
       'service-layout.hero-section': ServiceLayoutHeroSection;
       'service-layout.statistics': ServiceLayoutStatistics;
       'service-layout.sub-service': ServiceLayoutSubService;
